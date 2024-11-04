@@ -1,32 +1,50 @@
 cat_attributes = {
-    "intelligence": 0,
-    "energy": 0,
-    "weight": 0,
-    # change the inital values above
+    "intelligence": 10,
+    "energy": 100,
+    "weight": 50,
 }
 
 print("Welcome to my cat game!")
 
-# Take the user inputs for name and colour:
-name = input("Enter name:")
-# ...
+name = input("Enter name: ")
+colour = input("What colour do you want your cat to be? ")
 
-# start the while loop
-while True:
-    # Finish the string below
-    option = input("What would you like to do? 1. Play with your cat 2. Train your cat 3. show stats")
+play = True
+while play == True:
+    option = input("What would you like to do? 1. Play with your cat 2. Train your cat 3. Feed your cat 4. Put your cat to sleep 5. Show stats  ")
 
     if option == '1':
-        # change the cat's attributes here
-        pass
+        energy = cat_attributes["energy"]
+        if energy > 30:
+            cat_attributes["energy"] = energy - 10
+        else: 
+            print("Your cat's energy is too low to play. ")
     elif option == '2':
+        energy = cat_attributes["energy"]
+        if energy > 50:
+            cat_attributes["energy"] = energy - 10
+            intelligence = cat_attributes["intelligence"]
+            cat_attributes["intelligence"] = intelligence + 10
+        else:
+            print("Your cat's energy is too low to train")
+    elif option == '3':
+        energy = cat_attributes["energy"]
+        cat_attributes["energy"] = energy + 10
+        weight = cat_attributes["weight"]
+        cat_attributes["weight"] = weight + 2
         pass
-    # elif ...
-    else:
+    elif option == '4':
+        cat_attributes["energy"] = 100
+        pass
+    elif option == '5':
+        print(cat_attributes)
         pass
 
-    # finish off the if statements below
+
     if cat_attributes['energy'] < 0:
+        print("Your cat's energy is low, feed it or put it to sleep")
         pass
-    # elif ...
-    
+    elif cat_attributes["intelligence"] < 0:
+        print("You should train your cat")
+    elif cat_attributes["weight"] < 10: 
+        print("Your cat is getting small, feed it")    
